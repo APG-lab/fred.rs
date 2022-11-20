@@ -83,6 +83,7 @@ pub enum AclRule {
   AddHashedPassword(String),
   RemovePassword(String),
   RemoveHashedPassword(String),
+  Custom(String)
 }
 
 impl AclRule {
@@ -104,6 +105,7 @@ impl AclRule {
       AclRule::AddChannels(ref pat) => pat.to_value(),
       AclRule::AddCommands(ref pat) => pat.to_value("+"),
       AclRule::RemoveCommands(ref pat) => pat.to_value("-"),
+      AclRule::Custom (ref cst) => cst.into (),
     }
   }
 }
